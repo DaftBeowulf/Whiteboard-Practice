@@ -1,6 +1,7 @@
 #  A recursive solution
 #  How would you solve this iteratively?
 
+
 def checkBalanced(rootNode):
     # An empty tree is balanced by default
     if rootNode == None:
@@ -17,10 +18,12 @@ def checkBalanced(rootNode):
         if node == None:
             return 0
         return 1 + max(maxDepth(node.left), maxDepth(node.right))
-    
-    return maxDepth(rootNode) - minDepth(rootNode) == 0;
+
+    return maxDepth(rootNode) - minDepth(rootNode) == 0
 
 # Some console.log tests
+
+
 class BinaryTreeNode:
     def __init__(self, value):
         self.value = value
@@ -34,6 +37,7 @@ class BinaryTreeNode:
     def insertRight(self, value):
         self.right = BinaryTreeNode(value)
         return self.right
+
 
 root = BinaryTreeNode(5)
 print(checkBalanced(root))   # should print True
