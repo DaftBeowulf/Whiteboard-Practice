@@ -29,13 +29,13 @@ by calculating
 def product_of_others(arr):
     result = [0]*len(arr)
 
-    # get product of all values after given index
+    # get product of all values before any given index (by combining the products of values from beginning to end )
     temp_product = 1
     for i in range(0, len(arr)):
         result[i] = temp_product
         temp_product *= arr[i]
 
-    # *= by product of all values before index -- thereby product of all before/after values
+    # *= by product of all values after any index by doing the previous in reverse-- thereby product of all before/after values
     temp_product = 1
     for j in range(len(arr)-1, -1, -1):
         result[j] *= temp_product
