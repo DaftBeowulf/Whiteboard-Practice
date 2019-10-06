@@ -30,18 +30,37 @@ buffer.allValues()   # should return ['d', 'e', 'f']
 """
 
 
+# class RingBuffer:
+#     def __init__(self, limit):
+#         self.limit = limit
+#         self.ring = []
+
+#     def allValues(self):
+#         return self.ring
+
+#     def append(self, element):
+#         self.ring.append(element)
+#         if len(self.ring) > self.limit:
+#             del self.ring[0]
+
+# not optimal performance, as append must re-organize entire ring storage when appending past limit
+
 class RingBuffer:
     def __init__(self, limit):
         self.limit = limit
-        self.ring = []
+        self.ring = [None]*limit
+        self.current = 0
 
     def allValues(self):
         return self.ring
 
     def append(self, element):
-        self.ring.append(element)
-        if len(self.ring) > self.limit:
-            del self.ring[0]
+        self.ring[self.current] = element
+        self.current += 1
+        if self.current == self.limit:
+            self.current = 0
+
+# reassignment of values in ring storage at specified index is constant time, more optimal
 
 
 buffer = RingBuffer(3)
