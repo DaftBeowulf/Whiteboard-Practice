@@ -28,6 +28,8 @@ def find_rotation_point_bs(words):
 
     return ceiling_index
 
+# cutting problem in half with each iteration, so O(log N)
+
 
 example = [
     'ptolemaic',
